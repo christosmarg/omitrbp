@@ -1,0 +1,4 @@
+omitrbp
+=======
+
+omitrbp prints all kernel functions that omit their frame pointer (rbp).

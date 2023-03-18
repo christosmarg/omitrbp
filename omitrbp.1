@@ -1,0 +1,23 @@
+.Dd March 18, 2023
+.Dt OMITRBP 1
+.Os
+.Sh NAME
+.Nm omitrbp
+.Nd find kernel functions that omit the frame pointer
+.Sh SYNOPSIS
+.Nm
+.Op Fl f
+.Sh DESCRIPTION
+.Nm
+uses the kernel bootfile's ELF info to find all functions that omit the frame
+pointer (rbp). If the
+.Fl f
+option is specified,
+.Nm
+will print only the functions that do not push the frame pointer in the the
+first instruction.
+.Sh SEE ALSO
+.Xr elf 3 ,
+.Xr gelf 3
+.Sh AUTHORS
+.An Christos Margiolis Aq Mt christos@FreeBSD.org
