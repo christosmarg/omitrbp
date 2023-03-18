@@ -149,6 +149,7 @@ main(int argc, char *argv[])
 		if (s->sh.sh_link >= shnum)
 			continue;
 		stab = s->sh.sh_link;
+		len = (int)(s->sh.sh_size / s->sh.sh_entsize);
 		(void)elf_errno();
 		if ((d = elf_getdata(s->scn, NULL)) == NULL) {
 			if (elf_errno() != 0)
@@ -159,8 +160,7 @@ main(int argc, char *argv[])
 			continue;
 		if (s->sh.sh_entsize == 0)
 			continue;
-		len = (int)(s->sh.sh_size / s->sh.sh_entsize);
-		if (len > INT_MAX)
+		else if (len > INT_MAX)
 			continue;
 		for (j = 0; j < len; j++) {
 			if (gelf_getsym(d, j, &sym) != &sym) {
